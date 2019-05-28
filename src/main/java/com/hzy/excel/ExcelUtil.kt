@@ -86,6 +86,11 @@ object ExcelUtil {
                 // TODO Auto-generated catch block
                 e.printStackTrace()
             }*/
+
+            try {
+                fileName = String(fileName.toByteArray(Charsets.ISO_8859_1))
+            } catch (e: Exception) {
+            }
             response.contentType = "application/octet-stream;charset=ISO8859-1"
             response.setHeader("Content-Disposition", "attachment;filename=$fileName")
             response.addHeader("Pargam", "no-cache")
