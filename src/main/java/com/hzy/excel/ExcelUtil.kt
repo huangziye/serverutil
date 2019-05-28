@@ -5,6 +5,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.ss.usermodel.BorderStyle
 import org.apache.poi.ss.usermodel.HorizontalAlignment
 import org.apache.poi.ss.usermodel.IndexedColors
+import java.nio.charset.Charset
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
@@ -20,7 +21,7 @@ object ExcelUtil {
      * @param wb        HSSFWorkbook对象
      */
     @JvmOverloads
-    fun export(request: HttpServletRequest, response: HttpServletResponse, sheetName: String, title: Array<String>, values: Array<Array<String>>, wb: HSSFWorkbook? = null) {
+    fun export(request: HttpServletRequest, response: HttpServletResponse, sheetName: String, fileName: String, title: Array<String>, values: Array<Array<String>>, wb: HSSFWorkbook? = null) {
         var wb = wb
         // 第一步，创建一个HSSFWorkbook，对应一个Excel文件
         if (wb == null) {
@@ -66,7 +67,7 @@ object ExcelUtil {
 
         //响应到客户端
         try {
-            this.setResponseHeader(response, sheetName)
+            this.setResponseHeader(response, fileName)
             val os = response.outputStream
             wb.write(os)
             os.flush()
@@ -88,7 +89,7 @@ object ExcelUtil {
             }*/
 
             try {
-                fileName = String(fileName.toByteArray(Charsets.ISO_8859_1))
+                fileName = String(fileName.toByteArray(), Charset.forName("ISO8859-1"))
             } catch (e: Exception) {
             }
             response.contentType = "application/octet-stream;charset=ISO8859-1"
