@@ -10,14 +10,13 @@ object StringUtil {
     /**
      * 用自定义的分隔符拼接数据
      */
-    fun <T> joinToString(
-            collection: Collection<T>,
+    fun <T> Collection<T>.joinToString(
             separator: String = ",",
             prefix: String = "",
             postfix: String = ""
     ): String {
         val sb = StringBuilder(prefix)
-        for ((index, element) in collection.withIndex()) {
+        for ((index, element) in this.withIndex()) {
             if (index > 0) sb.append(separator)
             sb.append(element)
         }
