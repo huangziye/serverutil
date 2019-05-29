@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletResponse
  * Excel 相关工具类
  */
 object ExcelUtil {
+
     /**
      * 导出 excel
      * @param sheetName sheet名称
+     * @param fileName 导出的文件名
      * @param title     标题
      * @param values    内容
      * @param wb        HSSFWorkbook对象
