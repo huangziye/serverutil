@@ -1,11 +1,14 @@
 package com.hzy
 
+/**
+ * 字符串工具类
+ */
 object StringUtil {
 
     /**
      * 判断字符串是否为空
      */
-    fun isEmpty(str: String) = "" == str
+    fun isEmpty(str: String?) = null == str || "" == str
 
     /**
      * 用自定义的分隔符拼接数据
