@@ -83,12 +83,6 @@ object ExcelUtil {
     private fun setResponseHeader(response: HttpServletResponse, fileName: String) {
         var fileName = fileName
         try {
-            /*try {
-                fileName = String(fileName.toByteArray(), "ISO8859-1")
-            } catch (e: UnsupportedEncodingException) {
-                // TODO Auto-generated catch block
-                e.printStackTrace()
-            }*/
             try {
                 fileName = String(fileName.toByteArray(), Charset.forName("ISO8859-1"))
             } catch (e: Exception) {
